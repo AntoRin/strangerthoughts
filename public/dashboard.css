@@ -67,6 +67,7 @@ body {
   top: 0;
   bottom: 0;
   width: 0;
+  max-width: 100%;
   background: rgba(0, 0, 0, 0.932);
   overflow: hidden;
   z-index: 3;
