@@ -85,7 +85,7 @@ app.post("/register", async (req, res) => {
       { email: data.email, id: id },
       process.env.VERIFICATION_TOKEN
     );
-    let verificationURL = `http://localhost:5000/user/verify/${tempToken}`;
+    let verificationURL = `https://strangerthoughts.herokuapp.com/user/verify/${tempToken}`;
 
     const oauth2Client = new google.auth.OAuth2(
       process.env.GOOGLE_CLIENT_ID,
