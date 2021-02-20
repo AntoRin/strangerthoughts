@@ -270,3 +270,26 @@ a {
 .public-posts {
   margin-top: 100px;
 }
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time-tag {
+  font-size: 0.5rem;
+}
+
+.like-post {
+  display: inline-flex;
+  align-items: center;
+}
+
+.like-post p {
+  font-size: 1rem;
+  color: green;
+}
+
+.like-btn {
+  margin-right: 10px;
+}

@@ -11,31 +11,28 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <div class="landing">
-      <div class="home-card">
-        <div class="card-title">Home</div>
-        <div class="redirect-cards">
-          <a href="./login.html">Login</a>
-          or
-          <a href="./register.html">Register</a>
-        </div>
+    <nav>
+      <div class="nav-bar">
+        <div class="logo">Logo</div>
+        <div class="links"><a href="/login.html">Login</a></div>
       </div>
+    </nav>
+    <div class="cta">
+      <h1>Share your thoughts with the community</h1>
+      <h1>Give life to your most random thoughts</h1>
+      <h1>Read community posts</h1>
+      <h1>You can like a post as many times as you want!</h1>
+      <h1>Make a post private to simply take a seat back</h1>
+      <h1>Start for free <span style="color: lightblue">now.</span></h1>
     </div>
+    <div class="sign-up">
+      <a href="register.html">Signup</a>
+    </div>
+    <div class="images"></div>
 
-    <script>
-      let homeCard = document.querySelector(".home-card");
-      window.onload = () => {
-        homeCard.style.transform = "translateY(0)";
-        homeCard.style.opacity = 1;
-      };
-    </script>
+    <script src="./index.js"></script>
   </body>
 </html>

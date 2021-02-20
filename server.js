@@ -220,6 +220,13 @@ app.get("/publicposts", async (req, res) => {
   // res.json({ status: "ok" });
 });
 
+app.post("/publicposts/updatelikes", async (req, res) => {
+  let data = req.body;
+  console.log(data);
+  let updateLikes = await db.updateLikes(Client, data);
+  res.json({ status: "ok" });
+});
+
 app.get("/logout", (req, res) => {
   res.cookie("jwtToken", "", { httpOnly: true, maxAge: 1 });
   res.redirect("/login.html");

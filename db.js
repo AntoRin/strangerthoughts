@@ -138,6 +138,7 @@ async function getPublicPosts(Client) {
             username,
             thisPost: note.post,
             time: note.time,
+            likes: note.likes,
           });
       }
     }
@@ -152,9 +153,18 @@ async function getPublicPosts(Client) {
       }
     }
   }
-  console.log(timePosts);
 
   return timePosts;
+}
+
+async function updateLikes(Client, data) {
+  let user = await Client.db("Profile_App")
+    .collection("Profiles")
+    .updateOne(
+      { username: data.author, posts: { $elemMatch: { time: data.time } } },
+      { $set: { "posts.$.likes": data.likeCount } }
+    );
+  console.log(user.matchedCount);
 }
 
 module.exports = {
@@ -167,4 +177,5 @@ module.exports = {
   getPosts,
   deletePost,
   getPublicPosts,
+  updateLikes,
 };

@@ -67,8 +67,20 @@
           <% posts.forEach(post => {%>
           <li>
             <div>
-              <div><%= post.username %></div>
+              <div class="post-header">
+                <div>
+                  <strong><%= post.username %></strong>
+                </div>
+                <div class="time-tag">
+                  <i><%= post.time %> </i>
+                </div>
+              </div>
               <div><%= post.thisPost %></div>
+            </div>
+            <br />
+            <div class="like-post">
+              <button class="like-btn">Like</button>
+              <p><%= post.likes %></p>
             </div>
           </li>
           <%})%>

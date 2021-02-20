@@ -10,10 +10,12 @@ hClose.onclick = () => {
 };
 
 //Fetching user details
+let accountUser;
 let userLogo = document.getElementById("user-name");
 let detailName = document.getElementById("details-name");
 let detailEmail = document.getElementById("details-email");
 let userQuery = getUser().then((user) => {
+  accountUser = user.username;
   userLogo.innerHTML = user.username ? user.username[0] : "U";
   detailName.innerHTML = user.username ? user.username : "User";
   detailEmail.innerHTML = user.username ? user.email : "User";
@@ -33,10 +35,14 @@ fetch("/dashboard.html/posts")
   })
   .then((data) => {
     data.posts.forEach((post, index) => {
+      let likeTag = "";
+      if (post.likes || post.likes === 0) {
+        likeTag = `<div style="font-size: 1rem">Likes: ${post.likes}</div>`;
+      }
       let btnId = `deleteBtn:${index}`;
-      postList.innerHTML += `<li> <div class="list-btn"><div>${post.post}</div> <div><button type="button" class="btn-delete" id=${btnId}><svg id="svg-delete" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+      postList.innerHTML += `<li><div><Strong>${accountUser}</strong></div> <div class="list-btn"><div>${post.post}</div><div><button type="button" class="btn-delete" id=${btnId}><svg id="svg-delete" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
         <path id="svg-path" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-      </svg></button></div></div></li>`;
+      </svg></button></div></div>${likeTag}</li>`;
     });
   })
   .catch((err) => {
@@ -90,6 +96,7 @@ userPost.onsubmit = async (event) => {
       post: postBody.value,
       permission: permission.checked,
       time: new Date(),
+      likes: 0,
     };
     console.log(body);
     let options = {
