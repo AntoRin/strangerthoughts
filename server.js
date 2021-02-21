@@ -215,14 +215,11 @@ app.delete("/dashboard.html/posts", async (req, res) => {
 
 app.get("/publicposts", async (req, res) => {
   let publicPosts = await db.getPublicPosts(Client);
-  // console.log(publicPosts);
   res.render("posts-public", { posts: publicPosts });
-  // res.json({ status: "ok" });
 });
 
 app.post("/publicposts/updatelikes", async (req, res) => {
   let data = req.body;
-  console.log(data);
   let updateLikes = await db.updateLikes(Client, data);
   res.json({ status: "ok" });
 });
